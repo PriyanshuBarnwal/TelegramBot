@@ -21,8 +21,8 @@ def read_message(offset):
     print(reqs.text)
     data = reqs.json()
     for result in data["result"]:
-           print("hi")
-           # send_message(result)  #for starting just comment this line once
+           #print("hi")
+           send_message(result)  #for starting just comment this line once
     if data["result"]:
         return (data["result"][-1]["update_id"]+1)
         
