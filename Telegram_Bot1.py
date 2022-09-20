@@ -40,7 +40,10 @@ def auto_answer(message):
     answer = df.loc[df['Question'].str.lower() == message.lower()]  
     if not answer.empty or answer != "nan":
         answer = answer.iloc[0]['Answer']
-        return answer
+        if answer != "nan":
+            return answer
+        else:
+            return "Sorry, I could not understand you !!! I am still learning and try to get better in answering."
     else:
         sheet.insert_row((message.lower(),"","",""),2)
         return "Sorry, I could not understand you !!! I am still learning and try to get better in answering."
