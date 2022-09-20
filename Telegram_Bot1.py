@@ -42,7 +42,7 @@ def auto_answer(message):
         answer = answer.iloc[0]['Answer']
         print(type(answer),"-",answer)
         if str(answer) == "nan":
-            return "Sorry, I could not understand you !!! I am still learning and try to get better in answering."
+            return "Sorry, I could not understand you !!! I will be very soon replying this one."
         else:
             return answer
     else:
