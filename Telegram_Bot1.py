@@ -10,7 +10,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 scope = ['https://www.googleapis.com/auth/spreadsheets', "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("https://raw.githubusercontent.com/PriyanshuBarnwal/TelegramBot/main/Credintals.json",scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name("Credintals.json",scope)
 
 client = gspread.authorize(creds)
 sheet = client.open("output").sheet1
