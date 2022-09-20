@@ -46,7 +46,7 @@ def auto_answer(message):
         else:
             return answer
     else:
-        sheet.insert_row((message.lower(),"","",""),2)
+        sheet.insert_row((message.lower(),"nan","",""),2)
         return "Sorry, I could not understand you !!! I am still learning and try to get better in answering."
       
 
