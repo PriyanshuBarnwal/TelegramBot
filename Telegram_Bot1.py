@@ -41,7 +41,7 @@ def auto_answer(message):
     if not answer.empty or answer != "nan":
         answer = answer.iloc[0]['Answer']
         print(answer)
-        if answer == "nan":
+        if str(answer) == "nan":
             return "Sorry, I could not understand you !!! I am still learning and try to get better in answering."
         else:
             return answer
