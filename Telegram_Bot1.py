@@ -36,6 +36,7 @@ def read_message(offset):
         
 
 def auto_answer(message):
+    df = pd.read_csv(url, sep="\t")
     answer = df.loc[df['Question'].str.lower() == message.lower()]  
     if not answer.empty:
         answer = answer.iloc[0]['Answer']
