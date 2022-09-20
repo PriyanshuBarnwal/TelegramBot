@@ -36,7 +36,7 @@ def read_message(offset):
         
 
 def auto_answer(message):
-    answer = df.loc[df[' Question'].str.lower() == message.lower()]  
+    answer = df.loc[df['Question'].str.lower() == message.lower()]  
     if not answer.empty:
         answer = answer.iloc[0]['Answer']
         return answer
