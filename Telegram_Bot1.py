@@ -6,8 +6,16 @@
 
 import requests
 import pandas as pd
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
-url = 'https://raw.githubusercontent.com/PriyanshuBarnwal/Projects/main/output.tsv'
+scope = ['https://www.googleapis.com/auth/spreadsheets', "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_name("https://raw.githubusercontent.com/PriyanshuBarnwal/TelegramBot/main/Credintals.json",scope)
+
+client = gspread.authorize(creds)
+sheet = client.open("output").sheet1
+
+url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_Pg8k7Ydq94tYrN2UTFINnyesgIMsd1Dkrfd9Ks64zAbDXO4LC22Q6VerpWi5OdGLtJKHm0FGK7xg/pub?gid=1582598662&single=true&output=tsv'
 
 df = pd.read_csv(url, sep="\t")
 
@@ -33,9 +41,7 @@ def auto_answer(message):
         answer = answer.iloc[0]['Answer']
         return answer
     else:
-        df.loc[len(df.index)] = [message,"","",""]
-        df.to_csv(url, sep="\t" , index=False)
-        print(df.tail(1))
+        sheet.insert_row((message.lower(),"","",""),2)
         return "Sorry, I could not understand you !!! I am still learning and try to get better in answering."
       
 
